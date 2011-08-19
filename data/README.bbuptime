@@ -1,0 +1,33 @@
+This file gives a short description of the configuration possibilities of
+bbuptime.
+
+** Configuring bbuptime **
+--------------------------
+
+Blackbox users:
+
+By default bbuptime reads the Blackbox style-file as defined in .blackboxrc 
+and copies as much of the style as possible. The result is a application 
+which looks a lot like the toolbar. 
+
+Configuration options can be changed in bbuptime.bb. 
+Most likely you want to change some of these options, 
+
+The global configuration file can be found in $datadir/bbtools/bbuptime.bb
+A local configuration can be made by copying the bbuptime.bb file to 
+$HOME/.bbtools/bbuptime.bb and editing it.
+
+
+Users other Window managers:
+
+Configuration options can be changed in bbuptime.bb. 
+Most likely you want to change some of these options, 
+
+The global configuration file can be found in $datadir/bbtools/bbuptime.nobb
+A local configuration can be made by copying the bbuptime.nobb file to 
+$HOME/.bbtools/bbuptime.nobb and editing it.
+
+
+For the meaning of the different resources see the comments in the
+config-files.
+

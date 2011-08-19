@@ -1,0 +1,24 @@
+= ------------------ =
+= BBUPTIME CHANGELOG =
+= ------------------ =
+
+- Changes for 0.35
+  * Fixed more of bbdate's command-line option problems
+  * Did a few cleanups in select places (read: places I care about)
+  * GCC 3.x compatibility (thanks to Sean "Shaleh" Perry)
+
+- Changes for 0.3
+  * Changed around the -help screen (for the better, believe me!)
+  * Fixed a couple of bugs remaining from bbdate
+  * TOTALLY overhauled the resource system.  Now you've got customized 
+    bbuptime resource files, AND now you can create local copies of both the 
+    .bb and .nobb files.  Also ditched the now defunct .style file and merged
+    with the .bb/.nobb files.
+  * Now an excellent application launcher!  You can define up to three 
+    separate apps to launch with the left, right, and middle mouse buttons!
+
+- Changes for 0.2
+  * Fixed crazy bug when hours == 0
+
+- Changes for 0.1
+  * Now it exists

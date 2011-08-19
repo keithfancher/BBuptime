@@ -1,0 +1,16 @@
+Author: Keith Fancher <discostoo@punkass.com>
+
+
+Thanks to:
+
+- John Kennis <j.m.b.m.kennis@ele.tue.nl>
+  For bbdate, which I abused heavily while writing this
+
+- Bradley Hughes <bhughes@trolltech.com>  and 
+- Sean 'Shaleh' Perry <shaleh@debian.org>
+  For writing the excellent Blackbox Window manager, and
+  another set of thanks to Shaleh for submitting a patch
+  so bbuptime will compile under gcc-3.x.
+
+- Yer Mamma <fuglyho@bigasses.net>
+  For the good time last night.

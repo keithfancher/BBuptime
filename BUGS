@@ -1,0 +1,20 @@
+= ------------------- =
+= Bbuptime Known Bugs =
+= ------------------- =
+
+* Since it only updates every minute or so,  bbuptime's accuracy depends on 
+  when it was started in relation to the actual uptime. This can make it a 
+  few seconds off.  I don't think this matters AT ALL, because when one
+  looks at one's uptime, one should only care about days and hours, not
+  minutes, and ESPECIALLY not a few seconds.
+
+* The label style for bbuptime is sometimes different from that of other 
+  bbtools, sometimes (most of the time actually) it's the same.  I never 
+  noticed it before because it doesn't happen with any of the styles I use.  
+  After picking through some code, I discovered that because bbdate is old
+  as nuts (in comparison to other bbtools anyway), it has severe problems
+  with styles using ParentRelative.  To fix this I'd need to update, like,
+  EVERYTHING, and I don't feel like doing it now.
+
+* Apparently bbdate had a problem staying on top.  I have no idea if this
+  still happens, but if it existed in bbdate it exists in bbuptime also.

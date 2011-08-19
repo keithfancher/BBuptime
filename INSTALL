@@ -1,0 +1,21 @@
+To make and install this program :
+
+run:
+./configure (for configure options see ./configure --help)
+make
+make install (as root)
+
+The global configuration files can be found in $(datadir)/bbtools 
+(default: /usr/local/share/bbtools).
+
+Blackbox users:
+
+By default bbuptime reads the Blackbox style-file as defined in .blackboxrc 
+and copies as much of the style as possible. The result is a application 
+which looks a lot like the toolbar. Further configuration options can be 
+found in bbuptime.bb.
+
+Users other Window managers:
+
+By default bbuptime reads the bbuptime.nobb config file.
+

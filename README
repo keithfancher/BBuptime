@@ -1,0 +1,28 @@
+= --------------- =
+= bbuptime README =
+= --------------- =
+
+
+***
+NOTE: THIS TOOL IS A MILLION YEARS OLD. DON'T ACTUALLY USE IT. IT LIVES ON
+PURELY AS AN HISTORICAN CURIOSITY. /ktf
+***
+
+
+This is bbuptime, a bbtool that, you guessed it, displays your uptime.  This
+was a bbtool I really wanted, so I figured I'd just go write the damn thing.
+Seeing your uptime is a good thing, and it's something that is very easily
+accomplished for people who use GKrellm and/or WindowMaker dockapps.  I, as an
+avid fan of the Blackbox window manager, prefer bbtools.
+
+A somewhat new feature to bbuptime is the ability to launch applications by
+clicking on it.  You can set which buttons launch which apps in the config
+file.  The reason I decided to do this was that I'm ALWAYS hearing people ask
+for a decent app launcher bbtool, something that at the moment doesn't exist.
+Now you can pretend you have one.  Cool, ain't it?
+
+Something important to note is that I didn't write this program from scratch.
+I took another existing bbtool (bbdate by John Kennis), and modified it to fit
+my needs.  The reason I chose bbdate was that it did exactly what I wanted
+bbuptime to do, show a simple string inside a bbtool.  
+
