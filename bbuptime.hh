@@ -36,17 +36,17 @@ class BaseResource;
 class Basewindow;
 
 struct PIXMAP {
-	Pixmap 	frame;
-	Pixmap	label;
+  Pixmap   frame;
+  Pixmap  label;
 };
 
 struct GEOM {
-	int height;
-	int width;
-	int x;
-	int y;
+  int height;
+  int width;
+  int x;
+  int y;
 };
-	
+  
 
 class ToolWindow :public Basewindow
 {

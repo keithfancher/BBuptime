@@ -27,54 +27,55 @@ class ToolWindow;
 class BImageControl;
 
 struct STYLE {
-	bool auto_config;
-	char *conf_filename;
-	char *style_filename;	
-	time_t  mtime;
+  bool auto_config;
+  char *conf_filename;
+  char *style_filename;  
+  time_t  mtime;
 };
 
 class BaseResource {
 
-        public:
-                BaseResource(ToolWindow *);
-                virtual ~BaseResource(void);
+  public:
+    BaseResource(ToolWindow *);
+    virtual ~BaseResource(void);
 
-                void CopyColor(BColor ,BColor *);
-		void CopyTexture(BTexture ,BTexture *);
-		void Reload(void);
-		STYLE style;
+    void CopyColor(BColor ,BColor *);
+    void CopyTexture(BTexture ,BTexture *);
+    void Reload(void);
+    STYLE style;
 
-	protected:
-		void Load(void);
-		void readDatabaseTexture(char *, char *,char *,char *,
-					 BColor ,BColor ,unsigned long, 
-	                                 BTexture *);
+  protected:
+    void Load(void);
+    void readDatabaseTexture(char *, char *,char *,char *,
+           BColor ,BColor ,unsigned long, 
+                                   BTexture *);
 
-		void readDatabaseTexture(char *, char *,char *,char *,
-					 char *, char *,unsigned long, 
-	                                 BTexture *texture);
+    void readDatabaseTexture(char *, char *,char *,char *,
+           char *, char *,unsigned long, 
+                                   BTexture *texture);
 
 
-		void readDatabaseColor(char *, char *, char *,char *,
-				       char *, BColor *);
+    void readDatabaseColor(char *, char *, char *,char *,
+               char *, BColor *);
 
-		bool readDatabaseColor(char *, char *, char *,char *, 
-				       BColor *);
+    bool readDatabaseColor(char *, char *, char *,char *, 
+               BColor *);
 
-		ToolWindow *bbtool;
-		XrmDatabase resource_db;
-		XrmDatabase db;
-		time_t mtime;
-		bool auto_config;
+    ToolWindow *bbtool;
+    XrmDatabase resource_db;
+    XrmDatabase db;
+    time_t mtime;
+    bool auto_config;
 
-		virtual void LoadBBToolResource(void) = 0; 
-        private:
-		bool ReadResourceFromFilename(char *, char *);
-		void ReadBBtoolResource(void);
-		void ReadDefaultResource(void);
-		void ReadBlackboxResource(void);
+    virtual void LoadBBToolResource(void) = 0; 
 
-		int ResourceType;
+  private:
+    bool ReadResourceFromFilename(char *, char *);
+    void ReadBBtoolResource(void);
+    void ReadDefaultResource(void);
+    void ReadBlackboxResource(void);
+
+    int ResourceType;
 };
 
 #endif /* __BASERESOURCE_HH */

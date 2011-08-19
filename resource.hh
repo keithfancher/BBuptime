@@ -81,27 +81,27 @@ class Resource : public BaseResource
 {
 
   public:
-  	Resource(ToolWindow *);
-	~Resource(void);
+    Resource(ToolWindow *);
+  ~Resource(void);
 
-	struct FRAME frame; 
-	struct LABEL label;
-	struct POSITION position;
-	struct SHOW show;
-	struct REPORT report;
+  struct FRAME frame; 
+  struct LABEL label;
+  struct POSITION position;
+  struct SHOW show;
+  struct REPORT report;
 
   protected:
-  	virtual void  LoadBBToolResource(void);
+    virtual void  LoadBBToolResource(void);
 
   private:
-	void Frame(void);
-	void SizeAndPosition(void);
-	void MailCheckSettings(void);
-	void Label(void);
-	void Envelope(void);
-	void MailboxDep(void);
-	void Menu(void);
-	
-	void Clean(void);
+  void Frame(void);
+  void SizeAndPosition(void);
+  void MailCheckSettings(void);
+  void Label(void);
+  void Envelope(void);
+  void MailboxDep(void);
+  void Menu(void);
+  
+  void Clean(void);
 };
 #endif /* __RESOURCE_HH */

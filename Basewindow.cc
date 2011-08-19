@@ -23,34 +23,34 @@
 
 Basewindow::Basewindow(int argc,char **argv)
 {
-	display_name=NULL;
-	config_filename=NULL;
-	position=NULL;
-	withdrawn=False;
-	shape=False;	
-	server_grabs=0;
+  display_name=NULL;
+  config_filename=NULL;
+  position=NULL;
+  withdrawn=False;
+  shape=False;  
+  server_grabs=0;
 
-	ParseOptions(argc,argv);
+  ParseOptions(argc,argv);
 
-	dpy=NULL;
-	dpy=XOpenDisplay(display_name);
-	if (dpy==NULL)
-	{
-		fprintf(stderr,"Error can't open display %s\n",display_name);
-		exit(1);
-	}
+  dpy=NULL;
+  dpy=XOpenDisplay(display_name);
+  if (dpy==NULL)
+  {
+    fprintf(stderr,"Error can't open display %s\n",display_name);
+    exit(1);
+  }
 
-	screen=DefaultScreen(dpy);
-	v=DefaultVisual(dpy,screen);
-	root=RootWindow(dpy,screen);
-	depth=DefaultDepth(dpy,screen);
-	display_height=DisplayHeight(dpy,screen);
-	display_width=DisplayWidth(dpy,screen);
+  screen=DefaultScreen(dpy);
+  v=DefaultVisual(dpy,screen);
+  root=RootWindow(dpy,screen);
+  depth=DefaultDepth(dpy,screen);
+  display_height=DisplayHeight(dpy,screen);
+  display_width=DisplayWidth(dpy,screen);
 
-	xres = WidthOfScreen(ScreenOfDisplay(dpy, screen));
-	yres = HeightOfScreen(ScreenOfDisplay(dpy, screen));	
+  xres = WidthOfScreen(ScreenOfDisplay(dpy, screen));
+  yres = HeightOfScreen(ScreenOfDisplay(dpy, screen));  
 
-	MakeCursor();
+  MakeCursor();
 
 }
 
@@ -60,53 +60,53 @@ Basewindow::~Basewindow()
 
 void Basewindow::MakeCursor(void)
 {
-	cursor = XCreateFontCursor(dpy, XC_left_ptr);
-	XDefineCursor(dpy, root, cursor);
+  cursor = XCreateFontCursor(dpy, XC_left_ptr);
+  XDefineCursor(dpy, root, cursor);
 }
 
 
 void Basewindow::setupImageControl()
 {
-	image_control = new BImageControl(this);
-	image_control->installRootColormap();
+  image_control = new BImageControl(this);
+  image_control->installRootColormap();
 }
 
 
 void Basewindow::grab(void)
 {
-	if (! server_grabs++);
-	   XGrabServer(dpy);
+  if (! server_grabs++);
+     XGrabServer(dpy);
 
-	XSync(dpy, False);
+  XSync(dpy, False);
 }
 
 void Basewindow::ungrab(void)
 {
-	if (! --server_grabs);
-  	XUngrabServer(dpy);
+  if (! --server_grabs);
+    XUngrabServer(dpy);
 
-	if (server_grabs < 0) server_grabs = 0;
+  if (server_grabs < 0) server_grabs = 0;
 }
 
 //CHANGED BY KEITH (re: it was broken)
 void Basewindow::ParseOptions(int argc, char * * argv)
 {
-	int i;
+  int i;
 
-	for(i = 1; i < argc; i++)
-	{
-		if((!strcmp(argv[i], "-display")) | (!strcmp(argv[i], "-d")))
-		{
-			if(++i == argc)
+  for(i = 1; i < argc; i++)
+  {
+    if((!strcmp(argv[i], "-display")) | (!strcmp(argv[i], "-d")))
+    {
+      if(++i == argc)
       { 
         Usage(); 
         exit(2); 
       }
-			display_name = argv[i];
-		}
- 		else if((!strcmp(argv[i], "-bbconfig")) | (!strcmp(argv[i], "-bb")))
-		{
-			if(++i == argc)  
+      display_name = argv[i];
+    }
+     else if((!strcmp(argv[i], "-bbconfig")) | (!strcmp(argv[i], "-bb")))
+    {
+      if(++i == argc)  
       { 
         Usage(); 
         exit(2); 
@@ -117,10 +117,10 @@ void Basewindow::ParseOptions(int argc, char * * argv)
         exit(2); 
       }
       bbconfig_filename = argv[i];
-		}
- 		else if((!strcmp(argv[i], "-config")) | (!strcmp(argv[i], "-c")))
-		{
-			if(++i == argc)  
+    }
+     else if((!strcmp(argv[i], "-config")) | (!strcmp(argv[i], "-c")))
+    {
+      if(++i == argc)  
       { 
         Usage(); 
         exit(2); 
@@ -130,10 +130,10 @@ void Basewindow::ParseOptions(int argc, char * * argv)
         Usage(); 
         exit(2); 
       }
-			config_filename=argv[i];
-		}
- 		else if((!strcmp(argv[i], "-default")) | (!strcmp(argv[i], "-def")))
-		{
+      config_filename=argv[i];
+    }
+     else if((!strcmp(argv[i], "-default")) | (!strcmp(argv[i], "-def")))
+    {
       if (bbconfig_filename||config_filename) 
       { 
         Usage(); 
@@ -142,51 +142,51 @@ void Basewindow::ParseOptions(int argc, char * * argv)
       default_config=True;
     }
     else if((!strcmp(argv[i], "-v")) || (!strcmp(argv[i], "-version")))
-		{
-			fprintf(stderr, "%s version %s - (c) 2002 Keith Fancher\n",BBTOOL,BBTOOL_VERSION);
-			exit(2);
-		}
+    {
+      fprintf(stderr, "%s version %s - (c) 2002 Keith Fancher\n",BBTOOL,BBTOOL_VERSION);
+      exit(2);
+    }
     else if((!strcmp(argv[i], "-h")) || (!strcmp(argv[i], "-help")) || (!strcmp(argv[i], "--help")))
-		{
-			Usage();
-			exit(2);
-		}
+    {
+      Usage();
+      exit(2);
+    }
     else if((!strcmp(argv[i], "-position")) || (!strcmp(argv[i], "-p")))
-		{
-		  if(++i == argc)  
+    {
+      if(++i == argc)  
       { 
         Usage(); 
         exit(2); 
       }
-			position=argv[i];
-	  }
-		else if((!strcmp(argv[i], "-withdrawn")) || (!strcmp(argv[i], "-w")))
-		{
-		 	withdrawn=True;
-		}	
-		else if((!strcmp(argv[i], "-shape")) || (!strcmp(argv[i], "-s")))
-		{
-		 	shape=True;
-		}
+      position=argv[i];
+    }
+    else if((!strcmp(argv[i], "-withdrawn")) || (!strcmp(argv[i], "-w")))
+    {
+       withdrawn=True;
+    }  
+    else if((!strcmp(argv[i], "-shape")) || (!strcmp(argv[i], "-s")))
+    {
+       shape=True;
+    }
     
-	}
+  }
 }
 
 // CHANGED BY KEITH (re: it was fugly)
 void Basewindow::Usage()
 {
-	fprintf(stderr, "%s version %s \nCopyright (c) 2002 Keith Fancher <discostoo@punkass.com>\n\n",BBTOOL,BBTOOL_VERSION);
-	fprintf(stderr, "%s [-display <display name>] [-config <filename>] [-bbconfig <filename>]\n",BBTOOL);
-	fprintf(stderr, "         [-default] [-version] [-help] [-position <position>] [-withdrawn] [-shape]\n\n");
-	fprintf(stderr, "-d[isplay] <display name>   X server to connect to\n");
-	fprintf(stderr, "-c[onfig] <filename>        Alternate config file\n");
-	fprintf(stderr, "-bb[config] <filename>      Alternate Blackbox config file\n");
-	fprintf(stderr, "-def[ault]                  Fall back on default configuration\n");
-	fprintf(stderr, "-v[ersion]                  Display version number\n");
-	fprintf(stderr, "-h[elp]                     Display this help\n");
-	fprintf(stderr, "-p[osition] <position>      Set position of window\n");
-	fprintf(stderr, "            <position> = [+]|[-]x[+]|[-]y\n");
-	fprintf(stderr, "-w[withdrawn]               Place bbtool in the Slit\n");
-	fprintf(stderr, "-s[hape]                    Don't display groundplate\n\n");	
+  fprintf(stderr, "%s version %s \nCopyright (c) 2002 Keith Fancher <discostoo@punkass.com>\n\n",BBTOOL,BBTOOL_VERSION);
+  fprintf(stderr, "%s [-display <display name>] [-config <filename>] [-bbconfig <filename>]\n",BBTOOL);
+  fprintf(stderr, "         [-default] [-version] [-help] [-position <position>] [-withdrawn] [-shape]\n\n");
+  fprintf(stderr, "-d[isplay] <display name>   X server to connect to\n");
+  fprintf(stderr, "-c[onfig] <filename>        Alternate config file\n");
+  fprintf(stderr, "-bb[config] <filename>      Alternate Blackbox config file\n");
+  fprintf(stderr, "-def[ault]                  Fall back on default configuration\n");
+  fprintf(stderr, "-v[ersion]                  Display version number\n");
+  fprintf(stderr, "-h[elp]                     Display this help\n");
+  fprintf(stderr, "-p[osition] <position>      Set position of window\n");
+  fprintf(stderr, "            <position> = [+]|[-]x[+]|[-]y\n");
+  fprintf(stderr, "-w[withdrawn]               Place bbtool in the Slit\n");
+  fprintf(stderr, "-s[hape]                    Don't display groundplate\n\n");  
 }
 

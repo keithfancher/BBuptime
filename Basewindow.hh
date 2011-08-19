@@ -44,69 +44,69 @@ class Resource;
 
 class Basewindow {
 
-	public:
-		Basewindow(int, char**);
-		virtual ~Basewindow();
+  public:
+    Basewindow(int, char**);
+    virtual ~Basewindow();
 
 
-	/* compatible with BImageControl */
-	Display *getDisplay(void) { return dpy; }
-	int getDepth(void) { return depth; }
-	int getScreenNumber(void) { return screen; }
-	Window getRootWindow(void) { return root; }
-	Visual *getVisual(void) { return v; }
-	void grab(void);
-	void ungrab(void);
-	int getColorsPerChannel(void) { return colors_per_channel; }
-	Bool hasImageDither(void) { return image_dither; }
-	void setupImageControl(void);
+  /* compatible with BImageControl */
+  Display *getDisplay(void) { return dpy; }
+  int getDepth(void) { return depth; }
+  int getScreenNumber(void) { return screen; }
+  Window getRootWindow(void) { return root; }
+  Visual *getVisual(void) { return v; }
+  void grab(void);
+  void ungrab(void);
+  int getColorsPerChannel(void) { return colors_per_channel; }
+  Bool hasImageDither(void) { return image_dither; }
+  void setupImageControl(void);
 
-	enum { B_LeftJustify = 1, B_RightJustify, B_CenterJustify };	
-	BImageControl *imageControl(void) {return image_control;}
-	const BColor &borderColor(void) { return border_color; }	
-	Cursor sessionCursor(void) { return cursor;}
-	unsigned int xRes(void) {return	xres;}
-	unsigned int yRes(void) {return yres;}
+  enum { B_LeftJustify = 1, B_RightJustify, B_CenterJustify };  
+  BImageControl *imageControl(void) {return image_control;}
+  const BColor &borderColor(void) { return border_color; }  
+  Cursor sessionCursor(void) { return cursor;}
+  unsigned int xRes(void) {return  xres;}
+  unsigned int yRes(void) {return yres;}
 
-	Display *dpy;
-	Visual *v;
-	unsigned int depth;
-	BImageControl *image_control;
-	BColor border_color;
+  Display *dpy;
+  Visual *v;
+  unsigned int depth;
+  BImageControl *image_control;
+  BColor border_color;
 
-	int colors_per_channel;
-	bool image_dither;
+  int colors_per_channel;
+  bool image_dither;
 
-		char *position;
-	char *config_filename;
-	char *nobb_filename;
-	char *bbconfig_filename;
-	char *spooldir;
-	bool default_config;
-	bool withdrawn;
-	bool shape;
+    char *position;
+  char *config_filename;
+  char *nobb_filename;
+  char *bbconfig_filename;
+  char *spooldir;
+  bool default_config;
+  bool withdrawn;
+  bool shape;
 
-	protected:
-		virtual void ParseOptions(int argc,char **argv);
+  protected:
+    virtual void ParseOptions(int argc,char **argv);
 
-		Cursor cursor;
-		GC menuGC;
-		GC menuHiBGGC;
-		GC menuHiGC;
-		GC menuFrameGC;
-		unsigned int xres;
-		unsigned int yres;
-		int screen;
-		Window root;
-		Window menuwin;
-		char *display_name;
-		int display_height;
-		int display_width;
+    Cursor cursor;
+    GC menuGC;
+    GC menuHiBGGC;
+    GC menuHiGC;
+    GC menuFrameGC;
+    unsigned int xres;
+    unsigned int yres;
+    int screen;
+    Window root;
+    Window menuwin;
+    char *display_name;
+    int display_height;
+    int display_width;
 
-	private:
-		int server_grabs;
-		void MakeCursor(void);
-		void Usage(void);
+  private:
+    int server_grabs;
+    void MakeCursor(void);
+    void Usage(void);
 
 };
 
